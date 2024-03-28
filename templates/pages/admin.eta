@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>admin</title>
+  <!-- <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon"> -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://uicdn.toast.com/grid/latest/tui-grid.css" />
+  <link rel="stylesheet" href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css" />
+
+</head>
+
+<body>
+  <h1>Administration</h1>
+  <h2>Listings approval</h2>
+
+  <div id="grid">
+    
+  </div>
+
+  <% /* <h2>Announcements</h2>
+  <form action="/admin/announce" method="POST">
+    <input name="title_en" value="english" placeholder="english">
+    <input name="title_fr" value="french" placeholder="french">
+    <textarea name="english" cols=40 rows=4>I urge you to see this.</textarea>
+    <textarea name="french" cols=40 rows=4>I urge you to see this.</textarea>
+    <input type="submit" value="Publish">
+  </form> */ %>
+
+  <script>
+    {
+      const scriptElement = document.createElement("script")
+      scriptElement.src = "/javascripts/admin/admin.js"
+      document.body.appendChild(scriptElement)
+    }
+  </script>
+  <script type="text/javascript" src="https://uicdn.toast.com/tui.pagination/v3.4.0/tui-pagination.js"></script>
+</body>
+
+</html>

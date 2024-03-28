@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "e0d0ccd0-7a49-4312-9e59-e11c6d0287fb",
+		"name": "mongo API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "mongo_topByDivision",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "section",
+							"value": "blogs",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/debug/topByDivision",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"debug",
+						"topByDivision"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mongo_getListingsByTag",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "tag",
+							"value": "elit",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/debug/getListingsByTag",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"debug",
+						"getListingsByTag"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

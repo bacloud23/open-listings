@@ -1,0 +1,4 @@
+<!-- <script src="/socket.io/socket.io.min.js"></script> -->
+<% /* TODO: remove geobuf for all pages not needing maps */ %>
+<script src="https://unpkg.com/geobuf@3.0.2/dist/geobuf.js"></script>
+<script src="/javascripts/index/index.js"></script>

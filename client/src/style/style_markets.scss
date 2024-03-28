@@ -1,0 +1,13 @@
+@import './custom_markets.scss';
+// @import "~bootstrap/scss/bootstrap";
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+// @import '~@yaireo/tagify/src/tagify';
+// @import '~@tarekraafat/autocomplete.js/dist/css/autoComplete.02';
+// @import '~notyf/notyf.min';
+// @import '~tippy.js/dist/tippy';
+@import './style';
+
+.card.markets,
+li.markets {
+    background-color: #bd591220;
+}

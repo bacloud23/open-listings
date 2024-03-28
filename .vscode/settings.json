@@ -1,0 +1,62 @@
+{
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[eta]": {
+        "editor.defaultFormatter": "besthyhy.ejs-eta-beautify"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "j69.ejs-eta-beautify"
+    },
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "michelemelluso.code-beautifier"
+    },
+    "cSpell.enableFiletypes": ["!javascript", "!json"],
+    "cSpell.words": [
+        "blabla",
+        "cdesc",
+        "cptall",
+        "ESCO",
+        "Fastify",
+        "GCLOUD",
+        "geopoint",
+        "granpa",
+        "gwoogl",
+        "Hashable",
+        "HTMX",
+        "notif",
+        "TYPESENSE",
+        "uuidv",
+        "wsauth"
+    ],
+    "editor.codeActionsOnSave": [
+        "source.organizeImports",
+        {
+            "source.fixAll.sort-json": "never"
+        }
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "emmet.includeLanguages": {
+        "eta": "html"
+    },
+    "i18n-ally.localesPaths": ["client/src/shared/i18n", "data/locales", "public/locales"],
+    // Preferred path ending with extension (good for ESM & cjs).
+    "javascript.preferences.importModuleSpecifierEnding": "js",
+    // Enable auto import suggestions.
+    "javascript.suggest.autoImports": true,
+    // Other suggestions useful stuff:
+    // Complete functions with their parameter signature.
+    "javascript.suggest.completeFunctionCalls": true,
+    // Enable suggestion to complete JSDoc comments.
+    "javascript.suggest.completeJSDocs": true,
+    // The 3 most important one:
+    // Enable semantic checking of JavaScript files.
+    // Existing jsconfig.json or tsconfig.json files override this setting.
+    "js/ts.implicitProjectConfig.checkJs": true
+}

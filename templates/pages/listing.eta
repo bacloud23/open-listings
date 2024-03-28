@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <%~ include('../partials/shared/head', it); %>
+  <% if(typeof title !== 'undefined' && title === 'Reactivate') { %>
+  <style>
+    body {
+      background-image: linear-gradient(transparent 50%, rgb(226 169 169 / 50%) 50%);
+      background-size: 1px 4px;
+    }
+  </style>
+  <% } %>
+</head>
+
+
+<body>
+  <%~ include('../partials/shared/navbar', it); %>
+  <div class="container">
+    <%~ include('../partials/shared/lead', it); %>
+
+    <div id="breadcrumb">
+      <%~ include('../partials/sections/breadcrumb', it); %>
+    </div>
+
+    <div>                                                             <% /* <----------- start of listing head (user) -- */ %>
+      <p data-trans="(posted-by)">Posted by:</p>
+      <div id="user">
+        <% /* Avatar picture is also a button trigger messaging modal */ %>
+        <a href="#" rev="Send message to user" data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="false">
+          <img src="" id='avatar' width="80" height="80">
+        </a>
+        <% /* Modal */ %>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Address a private message to the author</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form class="row row-cols-lg-auto g-3 align-items-center" id="message-dialog" action="/listings/sendMessage" method="POST" name="sendMessage">
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <div id="quill-editor" class="message px-3 pt-3 bg-white border-bottom-0" data-target="#unique_target" data-max="500" style="color: #333!important;fill: #333!important;"></div>
+                    <div id="quill-counter" class="message px-2" style="font-size: 12px; font-family: 'Lucida Console', Arial, Helvetica, sans-serif;"></div>
+                  </div>
+                  <input type="hidden" name="email" value='<%= data.email %>'>
+                  <input type="hidden" name="id" value='<%= data._id %>'>
+                  <input name="message" class="send" id="message" value="" type="hidden">
+                  <div class="w-100">
+                    <button type="submit" class="btn btn-primary w-100 py-2 sm:w-auto sm:py-1" data-trans="(send)" id="send-message">Send</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>                                                            <% /* <----------- end of listing head (user) */ %>
+
+
+
+    <% if (typeof data.undraw !== 'undefined') { %>
+    <div id="undraw-output">
+      <img class="svg2" src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/<%= data.undraw+'.svg' %>" alt="<%= data.undraw %>" style="width: 40rem;">
+    </div>
+    <% } %>
+
+    <h2><%= data.title %></h2>
+    <div id="tags">
+      <% for (var i=0; data.tags && data.tags.length > 0 && i < data.tags.length ; i++) { %>
+      <a href="/tag/<%= data.tags[i] %>"><span class="badge bg-secondary"><%= data.tags[i] %></span></a>
+      <% } %>
+    </div>
+    <p><%~ data.desc %></p>
+    <% if (it.author) { %>
+    <details>
+    <summary class="" data-trans="">Edit listing</summary>
+    <%~ include('../partials/sections/add/editor', { desc: data.desc }); %>
+    <form class="" action="/listings/id/<%= data._id %>" method="POST" name="editListing">
+    <input name="description" class="edit" id="description" value="" type="hidden">
+    <div class="w-100">
+      <button type="submit" class="btn btn-primary w-100 py-2 sm:w-auto sm:py-1" id="edit-listing">Edit listing</button>
+    </div>
+    </form>
+    </details>
+    <% } %>
+
+    <% if (data.section === 'markets') { %>
+    <div class="map" id="listing-map"></div>
+    <% } %>
+    <br>
+
+    <% if(typeof data.img !== 'undefined'){ %>
+    <div class="d-flex">                                  <% /* <----------- start of img */ %>
+      <div class="mx-auto mx-lg-0">
+        <img id="listingImg" src="<%= data.img %>" alt="<%= data.title + ' image' %>" width="200rem">
+      </div>
+    </div>
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img src="" alt="" class="modal-content" id="img01">
+      <div id="caption"></div>
+    </div>                                                 <% /* <----------- end of img */ %>
+    <% } %>
+
+  <%~ include('../partials/conf/prepare_js', it); %>
+  <%~ include('../partials/shared/footer', it); %>
+  </div>
+
+  <%~ include('../partials/conf/before_body_close', it); %>
+  <script>
+    {
+      const scriptElement = document.createElement("script")
+      scriptElement.src = "/javascripts/listing/listing.js"
+      document.body.appendChild(scriptElement)
+
+    }
+  </script>
+</body>
+
+</html>

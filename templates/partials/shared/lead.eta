@@ -1,0 +1,8 @@
+<% if(typeof(title) !== 'undefined' && typeof(intro) !== 'undefined') { %>
+<div class="p-5 rounded">
+    <h1><%~ title %></h1>
+    <p class="lead"><%= intro %></p>
+</div>
+<% } else { %>
+<br>
+<% } %>

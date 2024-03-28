@@ -1,0 +1,480 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "definitions": {
+    "regular": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "intro": {
+          "type": "string"
+        },
+        "success": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "intro",
+        "success",
+        "error"
+      ]
+    },
+    "regularNoIntro": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "success": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "success",
+        "error"
+      ]
+    },
+    "titleErrorOnly": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "error"
+      ]
+    }
+  },
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "announcements": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "doc": {
+      "properties": {
+        "about": {
+          "type": "string"
+        },
+        "agreement": {
+          "type": "string"
+        },
+        "blogs": {
+          "type": "string"
+        },
+        "login": {
+          "type": "string"
+        },
+        "markets": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "string"
+        },
+        "validation": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "about",
+        "agreement",
+        "blogs",
+        "login",
+        "markets",
+        "skills",
+        "validation"
+      ],
+      "type": "object"
+    },
+    "listings": {
+      "type": "object",
+      "properties": {
+        "listings": {
+          "$ref": "#/definitions/regular"
+        },
+        "markets": {
+          "$ref": "#/definitions/regular"
+        },
+        "events": {
+          "$ref": "#/definitions/regular"
+        },
+        "skills": {
+          "$ref": "#/definitions/regular"
+        },
+        "hobbies": {
+          "$ref": "#/definitions/regular"
+        },
+        "blogs": {
+          "$ref": "#/definitions/regular"
+        },
+        "gwoogl": {
+          "$ref": "#/definitions/regular"
+        },
+        "geolocation": {
+          "$ref": "#/definitions/regular"
+        },
+        "POST_ERR": {
+          "$ref": "#/definitions/regular"
+        }
+      },
+      "required": [
+        "listings",
+        "markets",
+        "events",
+        "skills",
+        "hobbies",
+        "blogs",
+        "gwoogl",
+        "geolocation",
+        "POST_ERR"
+      ]
+    },
+    "index": {
+      "type": "object",
+      "properties": {
+        "listings": {
+          "$ref": "#/definitions/regular"
+        },
+        "tags": {
+          "$ref": "#/definitions/regular"
+        },
+        "division": {
+          "$ref": "#/definitions/regular"
+        },
+        "keyword": {
+          "$ref": "#/definitions/regular"
+        }
+      },
+      "required": [
+        "listings",
+        "tags",
+        "division",
+        "keyword"
+      ]
+    },
+    "tags": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "$ref": "#/definitions/regular"
+        }
+      },
+      "required": [
+        "tags"
+      ]
+    },
+    "listing": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/regularNoIntro"
+        },
+        "post": {
+          "$ref": "#/definitions/regularNoIntro"
+        },
+        "contact": {
+          "$ref": "#/definitions/regularNoIntro"
+        }
+      },
+      "required": [
+        "id",
+        "post",
+        "contact"
+      ]
+    },
+    "message": {
+      "type": "object",
+      "properties": {
+        "NOT_FOUND": {
+          "$ref": "#/definitions/regular"
+        },
+        "SERVER_ERROR": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "message"
+          ]
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "message"
+          ]
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "message"
+          ]
+        },
+        "VALIDATION_ERROR": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "error": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "error"
+          ]
+        }
+      },
+      "required": [
+        "NOT_FOUND",
+        "SERVER_ERROR",
+        "contact",
+        "verification",
+        "VALIDATION_ERROR"
+      ]
+    },
+    "signup": {
+      "type": "object",
+      "properties": {
+        "signup": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title"
+          ]
+        },
+        "EMAIL_TAKEN": {
+          "$ref": "#/definitions/titleErrorOnly"
+        },
+        "BAD_EMAIL": {
+          "$ref": "#/definitions/titleErrorOnly"
+        },
+        "SERVER_ERROR": {
+          "$ref": "#/definitions/titleErrorOnly"
+        },
+        "VALIDATION_ERROR": {
+          "$ref": "#/definitions/titleErrorOnly"
+        },
+        "UNAUTHORIZED": {
+          "$ref": "#/definitions/titleErrorOnly"
+        },
+        "INCORRECT_TOKEN": {
+          "$ref": "#/definitions/titleErrorOnly"
+        },
+        "ALREADY_VERIFIED": {
+          "$ref": "#/definitions/titleErrorOnly"
+        }
+      },
+      "required": [
+        "signup",
+        "EMAIL_TAKEN",
+        "BAD_EMAIL",
+        "SERVER_ERROR",
+        "VALIDATION_ERROR",
+        "UNAUTHORIZED",
+        "INCORRECT_TOKEN",
+        "ALREADY_VERIFIED"
+      ]
+    },
+    "login": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title"
+          ]
+        },
+        "INCORRECT_CREDENTIALS": {
+          "$ref": "#/definitions/titleErrorOnly"
+        },
+        "USER_UNVERIFIED": {
+          "$ref": "#/definitions/titleErrorOnly"
+        },
+        "SERVER_ERROR": {
+          "$ref": "#/definitions/titleErrorOnly"
+        },
+        "VALIDATION_ERROR": {
+          "$ref": "#/definitions/titleErrorOnly"
+        }
+      },
+      "required": [
+        "login",
+        "INCORRECT_CREDENTIALS",
+        "USER_UNVERIFIED",
+        "SERVER_ERROR",
+        "VALIDATION_ERROR"
+      ]
+    },
+    "reset": {
+      "type": "object",
+      "properties": {
+        "reset": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "title"
+          ]
+        },
+        "SERVER_ERROR": {
+          "$ref": "#/definitions/titleErrorOnly"
+        },
+        "VALIDATION_ERROR": {
+          "$ref": "#/definitions/titleErrorOnly"
+        }
+      },
+      "required": [
+        "reset",
+        "SERVER_ERROR",
+        "VALIDATION_ERROR"
+      ]
+    },
+    "mail": {
+      "type": "object",
+      "properties": {
+        "bootstrap": {
+          "type": "string"
+        },
+        "signup": {
+          "type": "object",
+          "properties": {
+            "subject": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "html": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "subject",
+            "text",
+            "html"
+          ]
+        }
+      },
+      "required": [
+        "bootstrap",
+        "signup"
+      ]
+    },
+    "blog": {
+      "type": "object",
+      "properties": {
+        "intro": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "intro"
+      ]
+    },
+    "confirmation": {
+      "type": "object",
+      "properties": {
+        "confirmation": {
+          "$ref": "#/definitions/titleErrorOnly"
+        }
+      },
+      "required": [
+        "confirmation"
+      ]
+    },
+    "generic": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "object",
+          "properties": {
+            "server": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "server"
+          ]
+        }
+      },
+      "required": [
+        "error"
+      ]
+    }
+  },
+  "required": [
+    "$schema",
+    "announcements",
+    "doc",
+    "listings",
+    "index",
+    "tags",
+    "listing",
+    "message",
+    "signup",
+    "login",
+    "reset",
+    "mail",
+    "blog",
+    "confirmation",
+    "generic"
+  ]
+}

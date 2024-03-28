@@ -1,0 +1,117 @@
+screen -XS <session-id> quit
+
+docker network ls
+docker network inspect open-listings_default
+ufw allow from 172.20.0.0/16
+ufw allow out on docker0 from 172.17.0.0/16
+
+docker volume create --name=mongo_data
+docker-compose up --build -d
+
+
+docker rm $(docker ps -a -q --filter "name=mongo")
+b5659d14bd55
+docker volume rm mongo_data
+mongo_data
+
+# prometheus.yml => - targets: ["localhost:3000"]
+./prometheus  --web.listen-address="localhost:9093"
+# http_request_summary_seconds{route='/'}
+# http_request_summary_seconds{method='POST'}
+# rate(http_request_duration_seconds_sum[5m]) / rate(http_request_duration_seconds_count[5m])  => average request for the last 5 minutes
+# sum(rate(nodejs_heap_space_size_used_bytes[5m])) by (space) / sum(rate(nodejs_heap_space_size_available_bytes[5m])) by (space)
+# histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le)) 
+12230
+11159
+
+# fluent-gem install fluent-plugin-mongo
+# ~/fluentd/bin$ ./fluentd -c ~/fluentd/fluent.conf
+# <source>
+#   @type tail
+#   path "/path/all.log"
+#   pos_file "/path/all.log.pos"
+#   tag req.ingest.fluentd
+#   format json # one JSON per line
+#   time_key time # optional; default = time
+# </source>
+
+# <match req.ingest.fluentd>
+#   @type mongo
+#   database logging #(required)
+#   collection classified-ads #(optional; default="untagged")
+#   flush_interval 10s
+# </match>
+
+# where is: grep -r -- 'logrotate.conf' /etc/cron*
+# service: /etc/logrotate.d
+# run in debug mode: /usr/sbin/logrotate -d /etc/logrotate.d/*
+
+# /path/classified-ads/logs/all.log {
+# 	hourly
+# 	rotate 12
+# 	compress
+# 	delaycompress
+# 	missingok
+# 	notifempty
+## 	create 644 root root
+# }
+
+# npm i -g @bull-monitor/cli
+# bull-monitor -p 3099 -q orders
+
+# http://www.mapshaper.org/
+
+
+# INSPECTING MEMEORY
+# npm install -g clinic autocannon 
+# npm run beautiful:inspect
+
+# old ls -la /var/lib/mongodb (mongodb:mongodb)
+# sudo mkdir /var/lib/db0/
+# sudo chgrp mongodb /var/lib/db0/
+#  to give read, write, and execute to everyone. (last solution)
+# sudo chmod ugo+rwx /var/lib/db0/
+# mongod --port 27017 --dbpath /var/lib/db0 --replSet rs0 --bind_ip localhost
+
+
+# Redis
+# sudo systemctl enable redis-server
+
+# Docker
+# sudo apt-get update
+# sudo apt-get install \
+#     ca-certificates \
+#     curl \
+#     gnupg \
+#     lsb-release
+
+# sudo mkdir -p /etc/apt/keyrings
+# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+# echo \
+#   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+#   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# INSTALL DOCKER ENGINE
+# sudo apt-get update
+# sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+# sudo docker build -t classified-ads --network=host . 
+# sudo docker images
+
+# Docker errors: https://robinwinslow.uk/fix-docker-networking-dns -- sudo service docker restart
+
+
+# Restart only classified-ads:
+# worker is the name given to the service in the yaml file and not anything that you see when running docker ps -a 
+# docker-compose stop -t 1 classified-ads
+# sudo docker-compose build classified-ads
+# docker-compose stop classified-ads       // go to hibernate
+# docker-compose rm classified-ads        // shutdown the PC 
+# docker-compose create classified-ads     // create the container from image and put it in hibernate
+# docker-compose start classified-ads //bring container to life from hibernation
+
+
+
+# curl -sSL https://install.python-poetry.org | python3 -
+# git clone https://github.com/rspeer/python-ftfy.git

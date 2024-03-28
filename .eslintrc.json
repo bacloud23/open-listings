@@ -1,0 +1,23 @@
+{
+    "extends": ["eslint:recommended", "prettier"],
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "requireConfigFile": false
+    },
+    "plugins": ["perfectionist"],
+    "rules": {
+        "perfectionist/sort-objects": [
+            "error",
+            {
+                "type": "natural",
+                "order": "asc"
+            }
+        ]
+    }
+}
